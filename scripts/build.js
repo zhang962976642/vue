@@ -1,13 +1,17 @@
+// Vue.js 构建打包入口文件
+
 const fs = require('fs')
 const path = require('path')
 const zlib = require('zlib')
 const rollup = require('rollup')
 const terser = require('terser')
 
+// 判断当前更目录下是否存在dist目录，不存在则创见
 if (!fs.existsSync('dist')) {
   fs.mkdirSync('dist')
 }
 
+// 获取所有构建Vue.js时所需的配置对象
 let builds = require('./config').getAllBuilds()
 
 // filter builds via command line arg
